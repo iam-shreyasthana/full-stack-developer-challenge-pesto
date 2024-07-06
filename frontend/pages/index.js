@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import TaskForm from '../components/TaskForm';
 import TaskList from '../components/TaskList';
 import TaskFilter from '../components/TaskFilter';
+import Head from 'next/head';
+import styles from "../styles/Home.module.css";
+import axios from 'axios';
+
+const API_BASE_URL = process.env.NEXT_PUBLIC_TASK_MANAGER_MICROSERVICE;
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
@@ -14,13 +19,9 @@ export default function Home() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('/api/tasks');
-      if (!response.ok) {
-        throw new Error('Failed to fetch tasks');
-      }
-      const data = await response.json();
-      setTasks(data);
-      filterTasks(filterStatus, data);
+      const response = await axios.get(`${API_BASE_URL}/tasks`);
+      setTasks(response.data);
+      filterTasks(filterStatus, response.data);
     } catch (error) {
       console.error('Error fetching tasks:', error.message);
     }
@@ -28,38 +29,20 @@ export default function Home() {
 
   const addTask = async (newTask) => {
     try {
-      const response = await fetch('/api/tasks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newTask),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to add task');
-      }
-      const data = await response.json();
-      setTasks([...tasks, data]);
+      const response = await axios.post(`${API_BASE_URL}/tasks/add`, newTask);
+      setTasks([...tasks, response.data]);
     } catch (error) {
       console.error('Error adding task:', error.message);
     }
   };
 
+
   const updateTask = async (updatedTask) => {
     try {
-      const response = await fetch(`/api/tasks/${updatedTask._id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedTask),
-      });
-      if (!response.ok) {
-        throw new Error('Failed to update task');
-      }
+      const response = await axios.post(`${API_BASE_URL}/tasks/update/${updatedTask._id}`, { status: updatedTask.status });
       const updatedTaskIndex = tasks.findIndex((task) => task._id === updatedTask._id);
       const updatedTasks = [...tasks];
-      updatedTasks[updatedTaskIndex] = updatedTask;
+      updatedTasks[updatedTaskIndex] = response.data;
       setTasks(updatedTasks);
       filterTasks(filterStatus, updatedTasks);
     } catch (error) {
@@ -69,12 +52,8 @@ export default function Home() {
 
   const deleteTask = async (taskId) => {
     try {
-      const response = await fetch(`/api/tasks/${taskId}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete task');
-      }
+      debugger
+      await axios.post(`${API_BASE_URL}/tasks/delete/${taskId}`);
       const updatedTasks = tasks.filter((task) => task._id !== taskId);
       setTasks(updatedTasks);
       filterTasks(filterStatus, updatedTasks);
@@ -92,7 +71,7 @@ export default function Home() {
     }
   };
 
-  const statuses = ['all', 'To Do', 'In Progress', 'Done'];
+  const statuses = ['To Do', 'In Progress', 'Done'];
 
   return (
     <>
@@ -102,8 +81,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div>
+      <main className={`${styles.main} poppins-regular`}>
+        <div className={styles.innerContainer}>
           <h1>Task Management Application</h1>
           <TaskForm onSubmit={addTask} />
           <TaskFilter statuses={statuses} onSelectStatus={setFilterStatus} />
