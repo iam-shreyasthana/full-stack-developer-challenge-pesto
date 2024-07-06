@@ -10,7 +10,6 @@ This is a full-stack task management application built with Next.js for the fron
 - [Introduction](#introduction)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Folder Structure](#folder-structure)
 - [Setup Instructions](#setup-instructions)
 - [API Endpoints](#api-endpoints)
 - [Screenshots](#screenshots)
