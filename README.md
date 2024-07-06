@@ -47,13 +47,15 @@ MongoDB (running locally or using a cloud service like MongoDB Atlas)
 
 - Navigate to the backend directory:
 
-sh
+```
 cd backend
+```
 
 - Install dependencies:
 
-sh
-npm install
+```
+yarn
+```
  
 - Create a .env file in the backend directory and add your MongoDB URI:
 
@@ -62,25 +64,29 @@ MONGODB_URI= your MONGO_DB URI
 
 - Start the server:
 
-sh
+```
 yarn dev
+```
 
 ## Front-End Setup
 
 - Navigate to the frontend directory:
 
-sh
+```
 cd frontend
+```
 
 - Install dependencies:
 
-sh
+```
 yarn
+```
 
 - Start the development server:
 
-sh
+```
 yarn dev
+```
 
 ## Running the Application
 
