@@ -16,9 +16,10 @@ const TaskForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='task-form' onSubmit={handleSubmit}>
       <input
         type="text"
+        className='input-field'
         placeholder="Task Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -26,15 +27,16 @@ const TaskForm = ({ onSubmit }) => {
       />
       <textarea
         placeholder="Task Description"
+        className='textarea-field'
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <select value={status} onChange={(e) => setStatus(e.target.value)}>
+      <select className='select-box' value={status} onChange={(e) => setStatus(e.target.value)}>
         <option value="To Do">To Do</option>
         <option value="In Progress">In Progress</option>
         <option value="Done">Done</option>
       </select>
-      <button type="submit">Add Task</button>
+      <button className='button button-primary' type="submit">Add Task</button>
     </form>
   );
 };
