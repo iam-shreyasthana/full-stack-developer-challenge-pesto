@@ -13,7 +13,7 @@ This is a full-stack task management application built with Next.js for the fron
 - [Setup Instructions](#setup-instructions)
 - [API Endpoints](#api-endpoints)
 - [Screenshots](#screenshots)
-- [License](#license)
+- [Notes](#notes)
 
 ## Features
 
@@ -103,12 +103,11 @@ PUT /api/tasks/ : Update a task
 DELETE /api/tasks/ : Delete a task
 
 
-License
-This project is licensed under the MIT License.
+## Screenshots
+
+![Screenshot 1](./frontend/public/screenshots/Screenshot1.png)
 
 
 ### Notes:
 
-- The `README.md` file includes sections for introduction, features, technologies used, folder structure, setup instructions, API endpoints, and license.
-- Customize the placeholders for screenshots with actual screenshots of your application.
 - Update the MongoDB URI in the `.env` file with your actual MongoDB connection string.
