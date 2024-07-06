@@ -96,11 +96,11 @@ yarn dev
 
 ### Task Endpoints
 
-GET /api/tasks : Get all tasks
-GET /api/tasks/ : Get a task by ID
-POST /api/tasks : Create a new task
-PUT /api/tasks/ : Update a task
-DELETE /api/tasks/ : Delete a task
+- GET /api/tasks : Get all tasks
+- GET /api/tasks/ : Get a task by ID
+- POST /api/tasks : Create a new task
+- PUT /api/tasks/ : Update a task
+- DELETE /api/tasks/ : Delete a task
 
 
 ## Screenshots
