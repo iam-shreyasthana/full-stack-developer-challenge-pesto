@@ -37,46 +37,13 @@ This is a full-stack task management application built with Next.js for the fron
 - **Front-End**: Next.js, React, SCSS
 - **Back-End**: Node.js, Express, MongoDB
 
-## Folder Structure
-
-full-stack-developer-challenge-pesto/
-├── backend/
-│   ├── controllers/
-│   │   └── taskController.js
-│   ├── models/
-│   │   └── Task.js
-│   ├── routes/
-│   │   └── taskRoutes.js
-│   ├── app.js
-│   ├── config.js
-│   ├── package.json
-│   └── .gitignore
-├── frontend/
-│   ├── components/
-│   │   ├── TaskForm.js
-│   │   ├── TaskList.js
-│   │   ├── TaskItem.js
-│   │   ├── TaskFilter.js
-│   │   └── ...
-│   ├── pages/
-│   │   ├── index.js
-│   │   └── ...
-│   ├── styles/
-│   │   ├── global.scss
-│   │   └── ...
-│   ├── public/
-│   ├── next.config.js
-│   ├── package.json
-│   └── .gitignore
-└── README.md
-
-#Setup Instructions
+## Setup Instructions
 
 Prerequisites
 Node.js (>= 14.x)
 MongoDB (running locally or using a cloud service like MongoDB Atlas)
 
-##Back-End Setup
+## Back-End Setup
 
 - Navigate to the backend directory:
 
@@ -98,7 +65,7 @@ MONGODB_URI= your MONGO_DB URI
 sh
 yarn dev
 
-##Front-End Setup
+## Front-End Setup
 
 - Navigate to the frontend directory:
 
@@ -115,14 +82,14 @@ yarn
 sh
 yarn dev
 
-##Running the Application
+## Running the Application
 
 - The front-end will be running on http://localhost:3000.
 - The back-end API will be running on http://localhost:5002.
 
-#API Endpoints
+## API Endpoints
 
-##Task Endpoints
+### Task Endpoints
 
 GET /api/tasks : Get all tasks
 GET /api/tasks/ : Get a task by ID
